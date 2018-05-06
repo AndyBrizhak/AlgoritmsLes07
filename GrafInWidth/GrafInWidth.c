@@ -117,7 +117,8 @@ int main(int argc, char * argv[])
 	getchar();
 	
 	Push(queue, 0);
-	
+	peekGr[0] = 2;
+	printf("\n peek GR %d = %d", 0, peekGr[0]);
 	while (queue->head != NULL && queue->tail != NULL)
 	{
 		i = Pop(queue);
