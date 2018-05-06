@@ -5,8 +5,9 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <limits.h>
-// Брижак Андрей ДЗ по курсу Алгоритмы и структуры данных.Задача 3.
-// 3. Написать функцию обхода графа в ширину.
+#include <GrafLib.h>
+// Брижак Андрей ДЗ по курсу Алгоритмы и структуры данных.Задача 4.
+// 4. *Создать библиотеку функций для работы с графами.
 
 typedef struct node
 {
@@ -55,22 +56,9 @@ int Pop(Queue* queue)
 	return value;
 }
 
-//void BFS(int* mas, int *peekGr, Queue* queue, int count, int st)
-//{
-//	int r;
-//	peekGr[st] = 2;
-//
-//	for (r = 0; r < count; r++)
-//	{
-//		printf("\n peek GR %d = %d", st, peekGr[r]);
-//		
-//		if ((*(mas + st * count + r) != 0) && (peekGr[r] == 0))
-//		{
-//
-//			DFS(mas, peekGr, count, r);
-//		}
-//	}
-//}
+
+
+
 
 int main(int argc, char * argv[])
 {
@@ -112,32 +100,21 @@ int main(int argc, char * argv[])
 	for (int i = 0; i <count; i++)
 	{
 		peekGr[i] = 0; // исходно все вершины равны 0
-		printf("%d ", peekGr[i]);
+		printf( "n\ %d ", peekGr[i]);
 	}
 	getchar();
-	
-	
-	Push(queue, 0);
-	peekGr[0] = 2;
-	printf("\n peek GR %d = %d", 0, peekGr[0]);
-	while (queue->head != NULL && queue->tail != NULL)
+	int st = 0;
+	DFS(mas, peekGr, count, st);
+	for (int i = 0; i <count; i++)
 	{
-		i = Pop(queue);
-			for (j = 1; j < count; j++)
-			{
-				if (peekGr[j] == 0)
-				{
-					Push(queue, j);
-					peekGr[j] = 2;
-					printf("\n peek GR %d = %d", j, peekGr[j]);
-				}
-			}
-
+		peekGr[i] = 0; // исходно все вершины равны 0
+		printf("n\ %d ", peekGr[i]);
 	}
-	getchar();
-	
+
+
+	BFS(queue, peekGr, count);
+
 	free(peekGr);
 	free(mas);
 	return 0;
 }
-
