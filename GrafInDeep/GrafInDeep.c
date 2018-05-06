@@ -55,17 +55,35 @@ int Pop(Queue* queue)
 
 	return value;
 }
+//DFS(mas, peekGr, count, 0);
+void DFS(int* mas, int *peekGr, int count, int st)
+{
+	int r;
+	/*cout << st + 1 << " ";*/
+	peekGr[st] = 2;
+	
+	for (r = 0; r < count; r++)
+	{
+		printf("\n peek GR %d = %d", st, peekGr[r]);
+		/*if ((*mas[st][r] != 0) && (nodes[r] == 0))*/
+		if ((*(mas + st * count + r) != 0) && (peekGr[r] == 0))
+		{
 
+			DFS(mas, peekGr, count, r);
+		}
+	}
+		
 
+}
 
 int main(int argc, char * argv[])
 {
 
 	char *locale = setlocale(LC_ALL, "");
 
-	Queue* Myqueue = malloc(sizeof(Queue));
-	Myqueue->head = NULL;
-	Myqueue->tail = NULL;
+	Queue* queue = malloc(sizeof(Queue));
+	queue->head = NULL;
+	queue->tail = NULL;
 
 
 	FILE * file = fopen("data.txt", "r");
@@ -93,16 +111,19 @@ int main(int argc, char * argv[])
 	}
 	getch();
 	fclose(file);
-	int *nodes; // вершины графа
-	nodes = malloc(count * sizeof(int));
+	int *peekGr; // вершины графа
+	peekGr = malloc(count * sizeof(int));
 	for (int i = 0; i <count; i++)
 	{ 
-		nodes[i] = 0; // исходно все вершины равны 0
-		printf("%d ", nodes[i]);
+		peekGr[i] = 0; // исходно все вершины равны 0
+		printf("%d ", peekGr[i]);
 	}
 	getchar();
-
-	free(nodes);
+	DFS(mas, peekGr, count, 0);
+	getchar();
+	//Push(*queue, 0); // помещаем в очередь первую вершину
+	
+	free(peekGr);
 	free(mas);
 	return 0;
 }
