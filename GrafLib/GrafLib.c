@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <limits.h>
-
+// Брижак Андрей ДЗ по курсу Алгоритмы и структуры данных.Задача 4.
+// 4. *Создать библиотеку функций для работы с графами.
 
 typedef struct node
 {
