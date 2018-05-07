@@ -5,40 +5,12 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <limits.h>
-// Брижак Андрей ДЗ по курсу Алгоритмы и структуры данных. Задача 2.
+// Брижак Андрей ДЗ по курсу Алгоритмы и структуры данных. Задача 5.
 // 5. Написать функцию для преобразования матрицы смежности в вершины смежности.
 
-typedef struct list
-{
-	int vertex;
-	struct list* next;
-}   List;
-
-typedef struct listgr
-{
-	int graf;
-	List list;
-} arrListGR[100];
-
-void DFS(int* mas, int *peekGr, int count, int st)
-{
-	int r;
-	
-	peekGr[st] = 2;
-
-	for (r = 0; r < count; r++)
-	{
-		printf("\n peek GR %d = %d", st, peekGr[r]);
-		
-		if ((*(mas + st * count + r) != 0) && (peekGr[r] == 0))
-		{
-
-			DFS(mas, peekGr, count, r);
-		}
-	}
 
 
-}
+
 
 int main(int argc, char * argv[])
 {
@@ -69,40 +41,23 @@ int main(int argc, char * argv[])
 	}
 	getch();
 	fclose(file);
-	//int *peekGr; // вершины графа
-	//peekGr = malloc(count * sizeof(int));
-
-	arrListGR *arrlistgr;
-	arrlistgr = malloc(count * sizeof(arrListGR));
+	
 	for (int i = 0; i <count; i++)
 	{
+		printf("\n Graf %d  ", i);
 		for ( j = 1; j < count; j++)
 		{
 			if (/*(*/*(mas + i * count + j) != 0/*) && (peekGr[r] == 0)*/)
 			{
-				List tmp;
-				arrlistgr[i]->graf = i; 
-				arrlistgr[i]->list = /*vertex = *(mas + i * count + j)*/
+				printf("%d ", j);
+				
 					
 			}
 		}
-		/*
-		if ((*(mas +  * count + r) != 0) && (peekGr[r] == 0))
-		{
-
-			DFS(mas, peekGr, count, r);
-		}*/
-		//peekGr[i] = 0; // исходно все вершины равны 0
-		//printf("%d ", peekGr[i]);
+		
 	}
 	getchar();
-	/*DFS(mas, peekGr, count, 0);*/
-
-
 	getchar();
-	
-
-	/*free(peekGr);*/
 	free(mas);
 	return 0;
 }
